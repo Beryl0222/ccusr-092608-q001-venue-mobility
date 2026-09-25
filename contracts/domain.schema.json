@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "分散赛区通行保障台领域事件",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "SCHEDULE_FROZEN",
+        "ROUTE_REVISED",
+        "CAPACITY_HELD",
+        "EMERGENCY_RELEASED",
+        "ARRIVAL_CONFIRMED"
+      ]
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "travel_demand",
+        "route_revision",
+        "capacity_commitment",
+        "arrival_case"
+      ]
+    },
+    "aggregate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "payload_required_by_event": {
+    "ROUTE_REVISED": [
+      "impact_scope",
+      "effective_at"
+    ],
+    "CAPACITY_HELD": [
+      "resource_ref",
+      "quantity"
+    ],
+    "EMERGENCY_RELEASED": [
+      "review_due_at",
+      "reason"
+    ]
+  },
+  "additionalProperties": false
+}
