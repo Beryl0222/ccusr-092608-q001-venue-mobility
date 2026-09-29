@@ -19,16 +19,28 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "FACT_REGISTERED",
         "SCHEDULE_FROZEN",
+        "DEMAND_SUBMITTED",
+        "FACT_CONFIRMED",
+        "CLEARANCE_ISSUED",
         "ROUTE_REVISED",
         "CAPACITY_HELD",
+        "CAPACITY_RELEASED",
         "EMERGENCY_RELEASED",
-        "ARRIVAL_CONFIRMED"
+        "EMERGENCY_RATIFIED",
+        "DEPARTED",
+        "NO_SHOW_RELEASED",
+        "ARRIVAL_CONFIRMED",
+        "ESCALATED",
+        "DEMAND_ISOLATED",
+        "CASE_OPENED"
       ]
     },
     "aggregate_type": {
       "type": "string",
       "enum": [
+        "fact_catalog",
         "travel_demand",
         "route_revision",
         "capacity_commitment",
@@ -52,6 +64,38 @@
     }
   },
   "payload_required_by_event": {
+    "FACT_REGISTERED": [
+      "fact_kind",
+      "fact_key",
+      "fact_version",
+      "snapshot"
+    ],
+    "SCHEDULE_FROZEN": [
+      "schedule_version",
+      "road_version"
+    ],
+    "DEMAND_SUBMITTED": [
+      "requester",
+      "category",
+      "headcount",
+      "accessibility_seats",
+      "origin_ref",
+      "venue_ref",
+      "needed_at",
+      "facts"
+    ],
+    "FACT_CONFIRMED": [
+      "role",
+      "confirmation_key",
+      "claims"
+    ],
+    "CLEARANCE_ISSUED": [
+      "schedule_version",
+      "road_version",
+      "itinerary",
+      "checkpoints",
+      "access"
+    ],
     "ROUTE_REVISED": [
       "impact_scope",
       "effective_at"
@@ -60,8 +104,44 @@
       "resource_ref",
       "quantity"
     ],
+    "CAPACITY_RELEASED": [
+      "resource_ref",
+      "quantity",
+      "reason"
+    ],
     "EMERGENCY_RELEASED": [
+      "revision_id",
+      "resource_ref",
+      "quantity",
       "review_due_at",
+      "reason"
+    ],
+    "EMERGENCY_RATIFIED": [
+      "revision_id"
+    ],
+    "DEPARTED": [
+      "departed_at"
+    ],
+    "NO_SHOW_RELEASED": [
+      "resource_ref",
+      "quantity",
+      "released_at"
+    ],
+    "ARRIVAL_CONFIRMED": [
+      "arrived_at"
+    ],
+    "ESCALATED": [
+      "to_role",
+      "reason"
+    ],
+    "DEMAND_ISOLATED": [
+      "reused_key",
+      "held_fingerprint",
+      "incoming_fingerprint"
+    ],
+    "CASE_OPENED": [
+      "demand_id",
+      "opened_at",
       "reason"
     ]
   },

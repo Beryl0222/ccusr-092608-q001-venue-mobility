@@ -1,5 +1,5 @@
 [project]
 name = "venue-mobility"
-version = "0.1.0"
-description = "分散赛区通行保障台领域契约"
+version = "0.2.0"
+description = "分散赛区通行保障台：版本化事实、原子运力占用、紧急改线与到场复盘"
 requires-python = ">=3.11"
