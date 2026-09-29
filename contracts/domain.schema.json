@@ -19,10 +19,17 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "FACT_RECORDED",
         "SCHEDULE_FROZEN",
         "ROUTE_REVISED",
         "CAPACITY_HELD",
+        "CAPACITY_RELEASED",
+        "REQUEST_DENIED",
         "EMERGENCY_RELEASED",
+        "EMERGENCY_RATIFIED",
+        "DISPATCH_CONFIRMED",
+        "NO_SHOW_RELEASED",
+        "ESCALATION_RAISED",
         "ARRIVAL_CONFIRMED"
       ]
     },
@@ -52,6 +59,10 @@
     }
   },
   "payload_required_by_event": {
+    "FACT_RECORDED": [
+      "fact_type",
+      "owner_role"
+    ],
     "ROUTE_REVISED": [
       "impact_scope",
       "effective_at"
@@ -60,9 +71,36 @@
       "resource_ref",
       "quantity"
     ],
+    "CAPACITY_RELEASED": [
+      "resource_ref",
+      "quantity"
+    ],
+    "REQUEST_DENIED": [
+      "request_ref",
+      "reason_code"
+    ],
     "EMERGENCY_RELEASED": [
       "review_due_at",
       "reason"
+    ],
+    "EMERGENCY_RATIFIED": [
+      "request_ref",
+      "approver"
+    ],
+    "DISPATCH_CONFIRMED": [
+      "request_ref",
+      "departed_at"
+    ],
+    "NO_SHOW_RELEASED": [
+      "request_ref",
+      "released_at"
+    ],
+    "ESCALATION_RAISED": [
+      "request_ref",
+      "reason_code"
+    ],
+    "ARRIVAL_CONFIRMED": [
+      "arrived_at"
     ]
   },
   "additionalProperties": false

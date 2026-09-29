@@ -1,5 +1,11 @@
 [project]
 name = "venue-mobility"
-version = "0.1.0"
-description = "分散赛区通行保障台领域契约"
+version = "0.2.0"
+description = "分散赛区通行保障台：版本锁定的放行决策、紧急改线、失约释放与到场复盘"
 requires-python = ">=3.11"
+
+[project.scripts]
+venue-mobility = "venue_mobility.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

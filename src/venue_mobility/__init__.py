@@ -1,5 +1,6 @@
-"""分散赛区通行保障台领域契约。"""
+"""分散赛区通行保障台。"""
 
 from .contracts import ContractIssue, validate_event
+from .service import MobilityService, ServiceError
 
-__all__ = ["ContractIssue", "validate_event"]
+__all__ = ["ContractIssue", "MobilityService", "ServiceError", "validate_event"]
